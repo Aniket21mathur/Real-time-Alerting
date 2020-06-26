@@ -61,47 +61,59 @@ class App extends Component {
 
 render() {
     return (
-     <div className="App">
-                <form id="main-login">
+     <div className="container">
+                <form className="form-inline">
                     <h2>Real time Alerting</h2>
-                    <label>
-                        <span>SERVER_ID:</span>
+                    <div className="form-group">
+                        <label>SERVER_ID:</label><br/>
                         <input type="number" name="id" value={this.state.server_id} onChange={this.handleIdChange}/><br/>
-                    </label>
-                    <br/>
-                    <label>
-                        <span>CPU_UTILIZATION:</span>
+                    </div>
+            
+                    <div className="form-group">
+                        <label>CPU_UTILIZATION:</label><br/>
                         <input type="number" name="cpu" value={this.state.cpu} onChange={this.handleCPUChange} /><br/>
-                    </label>
-                    <br/>
-                    <label>
-                    <span>MEMORY_UTILIZATION:</span>
+                    </div>
+                   
+                    <div className="form-group">
+                    <label>MEMORY_UTILIZATION:</label><br/>
                     <input type="number" name="mem" value={this.state.memory} onChange={this.handleMEMChange}/><br/>
-                    </label>
-                    <br/>
-                    <label>
-                    <span>DISK_UTILIZATION:</span>
+                    </div>
+                
+                    <div className="form-group">
+                    <label>DISK_UTILIZATION:</label><br/>
                     <input type="number" name="dsk" value={this.state.disk} onChange={this.handleDISKChange}/><br/>
-                    </label>
+                    </div>
+                    
                     <br/>
-                    <div className="align-right">
-                   <br/>
-                   <button onClick={this.onSubmit}>Submit</button>
-                  </div>
+                   <button onClick={this.onSubmit} className="btn btn-default">Submit</button>
+       
                 </form>
-                <div>
-                  <p>{this.state.alert}</p>
-                  <p>{this.state.server_id}</p>
 
+                <div className= "container">
+                  <h3>Results</h3>
+
+                  <div class="panel panel-default">
+                  <div class="panel-heading">ALERT</div>
+                  <div class="panel-body">{this.state.alert}</div>
+                  </div>
+
+                  <div class="panel panel-default">
+                  <div class="panel-heading">SERVER_ID</div>
+                  <div class="panel-body">{this.state.server_id}</div>
+                  </div>
+
+                  <div class="panel panel-default">
+                  <div class="panel-heading">RULES VIOLATED</div>
                 {this.state.rules && this.state.rules.map( (rule, index) => {
-                    return <p key={ index }>{rule}</p>;
+                    return <div class="panel-body">{rule}</div>;
                   })}
+                  </div>
+
                  </div>
             </div>
     );
   }
 }
-
 
 export default App;
 
