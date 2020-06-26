@@ -22,11 +22,11 @@ def alert(request):
 		error_memory_utilization = "MEMORY_UTILIZATION " + str(memory_utilization) + "% Expected <=75%"
 		error_disk_utilization = "DISK_UTILIZATION " + str(disk_utilization) + "% Expected <=60%"
 
-		if cpu_utilization > 85:
+		if int(cpu_utilization) > 85:
 			rules_violated.append(error_cpu_utilization)
-		if memory_utilization > 75:
+		if int(memory_utilization) > 75:
 			rules_violated.append(error_memory_utilization)
-		if disk_utilization > 60:
+		if int(disk_utilization) > 60:
 			rules_violated.append(error_disk_utilization)
 
 		result = {}
