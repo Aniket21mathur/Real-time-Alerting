@@ -131,3 +131,27 @@ Experiment with the input fields and observe the expected results!
 ![](images/operated.png)
 
 The images for the UI can be found in `images/`.
+
+## Demonstration using Kafka-Python
+
+I have used the `kafka-python` to test the API. I imported the module and started a consumer in
+the `Django` App.
+
+```
+  from kafka import KafkaProducer
+  producer = KafkaConsumer(bootstrap_servers='kafkaBroker:9092')
+```
+And then started a producer instance and sent the `JSON` object to the consumer.
+
+```
+kafka-console-producer.sh --broker-list localhost:9092
+--topic Real-time-API-Test
+{"SERVER_ID":1220, "CPU_UTILIZATION":94, "MEMORY_UTILIZATION":80, "DISK_UTILIZATION": 55}
+```
+
+and the API returned the following
+
+```
+{"ALERT": "True", "SERVER_ID": 1220, "RULES_VIOLATED": ["CPU_UTILIZATION 94% Expected <=85%", "MEMORY_UTILIZATION 80% Expected <=75%"]}
+```
+which was the expected output!
