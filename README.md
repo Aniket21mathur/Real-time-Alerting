@@ -1,12 +1,12 @@
 # Real-time-Alerting
 
-Real Time Alerting is a mechanism to identify anomalies in the system as it occurs(and not afterwards)and use it for various purposes like reporting, blocking or corrective actions.
+Real-Time Alerting is a mechanism to identify anomalies in the system as it occurs(and not afterward) and use it for various purposes like reporting, blocking or corrective actions.
 
-According to the problem statement an alert should be generate when either-
+According to the problem statement an alert should be generated when either-
 
-- CPU_UTILIZATION>85%
-- MEMORY_UTILIZATION>75%
-- DISK_UTILIZATION>60%
+- CPU_UTILIZATION > 85%
+- MEMORY_UTILIZATION > 75%
+- DISK_UTILIZATION > 60%
 
 ## Task checklist
 
@@ -26,8 +26,8 @@ developed `client`.
 ## Tech Stack used
 
 - `Django` for writing the REST API(server side)
-- `Rect.js` for writing the frontend(client side)
-- `Kafka-Python` as an input provider to test the API.
+- `React.js` for writing the frontend(client side)
+- `Kafka-Python` for a pipeline generator to test the API.
 
 ## Setting up the application
 
@@ -36,10 +36,10 @@ Clone the repository.
 ```
 git clone https://github.com/Aniket21mathur/Real-time-Alerting
 ```
-Or if you already have a local copy go to the root of the repository.
+Or if you already have a local copy, go to the root of the repository.
 
 ```
-cd Real-time-Alerting
+cd Real-time-Alerting/
 ```
 
 Create and activate a new Python3 virtual environment.
@@ -114,7 +114,7 @@ we get the following output
 
 ## Demonstration using React UI
 
-I have developed a `React.js` UI which makes it easier of a user to interact with the API.
+I have developed a `React.js` UI which makes it easier for a user to interact with the API.
 
 To access the UI, run
 
@@ -134,12 +134,12 @@ The images for the UI can be found in `images/`.
 
 ## Demonstration using Kafka-Python
 
-I have used the `kafka-python` to test the API. I imported the module and started a consumer in
+I have also used `kafka-python` to test the API. I imported the module and started a consumer in
 the `Django` App.
 
 ```
-  from kafka import KafkaProducer
-  producer = KafkaConsumer(bootstrap_servers='kafkaBroker:9092')
+  from kafka import KafkaConsumer
+  consumer = KafkaConsumer(bootstrap_servers='kafkaBroker:9092')
 ```
 And then started a producer instance and sent the `JSON` object to the consumer.
 
