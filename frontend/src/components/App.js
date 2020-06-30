@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 
 class App extends Component {
+  // initalize states
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +21,10 @@ class App extends Component {
     this.handleDISKChange = this.handleDISKChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  /*
+    Handle state change from input form
+  */
 
   handleIdChange(e) {
      this.setState({server_id: e.target.value});
@@ -40,6 +45,7 @@ class App extends Component {
   onSubmit(e) {
     e.preventDefault();
 
+    // make a POST request to fetch data from the server
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -59,6 +65,7 @@ class App extends Component {
  
   }
 
+// render input form and output container
 render() {
     return (
      <div className="container">
